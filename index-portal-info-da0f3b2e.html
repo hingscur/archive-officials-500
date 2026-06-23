@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>九游娱乐 | 发现轻松有趣的日常</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f7fa;
+            color: #1f2a3a;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .accent-link {
+            color: #c73e3a;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .accent-link:hover {
+            border-bottom-color: #c73e3a;
+            color: #a12e2b;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #1b1f2e 0%, #2a3345 100%);
+            color: #eaeef3;
+            padding: 2.8rem 1.2rem 2.4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 -2px 8px rgba(0,0,0,0.08);
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -60%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle at 30% 40%, rgba(199, 62, 58, 0.12) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
+            line-height: 1.2;
+        }
+        .hero h1 small {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #b6c2d4;
+            margin-top: 0.35rem;
+            letter-spacing: 2px;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 620px;
+            margin: 1rem auto 0;
+            color: #cdd6e6;
+            font-weight: 300;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.8rem 1.2rem 2.8rem;
+        }
+
+        /* 介绍段落 */
+        .intro-section {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2rem 2.2rem;
+            margin-bottom: 2.4rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+        .intro-section h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #1f2a3a;
+            border-left: 4px solid #c73e3a;
+            padding-left: 0.8rem;
+        }
+        .intro-section p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #2e3b4e;
+        }
+        .intro-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 三个场景模块 — 卡片网格 */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.6rem;
+            margin-bottom: 2.4rem;
+        }
+        .scene-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.6rem 1.4rem 1.8rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #eef1f6;
+        }
+        .scene-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+            border-color: #d6dbe8;
+        }
+        .scene-card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: #1f2a3a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .scene-card h3 span {
+            background: #c73e3a;
+            color: #fff;
+            font-size: 0.8rem;
+            padding: 0 8px;
+            border-radius: 20px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        .scene-card p {
+            color: #3e4c62;
+            font-size: 0.95rem;
+        }
+
+        /* 常见说明 */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem 2.2rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            margin-bottom: 1.6rem;
+        }
+        .faq-summary h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            color: #1f2a3a;
+        }
+        .faq-item {
+            border-bottom: 1px solid #eef1f6;
+            padding: 0.7rem 0;
+        }
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+        .faq-question {
+            font-weight: 500;
+            color: #1f2a3a;
+            margin-bottom: 0.2rem;
+        }
+        .faq-answer {
+            color: #4a5a72;
+            font-size: 0.95rem;
+        }
+
+        /* 自然链接段 */
+        .link-note {
+            margin-top: 2.2rem;
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 0.95rem;
+            color: #4a5a72;
+        }
+        .link-note .accent-link {
+            font-weight: 600;
+        }
+
+        /* 页脚 */
+        .footer {
+            border-top: 1px solid #dee3ed;
+            padding: 1.6rem 1.2rem;
+            text-align: center;
+            color: #6b7c92;
+            font-size: 0.85rem;
+            background: #ffffff;
+        }
+
+        /* 响应式 */
+        @media (max-width: 820px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .scenes-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .intro-section, .faq-summary {
+                padding-left: 1.4rem;
+                padding-right: 1.4rem;
+            }
+        }
+        @media (max-width: 540px) {
+            .hero {
+                padding: 2rem 1rem 1.8rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .scenes-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .container {
+                padding-left: 0.8rem;
+                padding-right: 0.8rem;
+            }
+            .intro-section, .faq-summary {
+                padding-left: 1rem;
+                padding-right: 1rem;
+                border-radius: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <h1>
+            九游娱乐
+            <small>让闲暇时光更有温度</small>
+        </h1>
+        <p>探索生活里的轻松节奏，发现一种兼顾趣味与品质的日常陪伴方式。</p>
+    </div>
+</header>
+
+<main class="container">
+    <!-- 核心介绍 -->
+    <section class="intro-section">
+        <h2>不只是娱乐，更是一份日常的调剂</h2>
+        <p>如今人们总在忙碌中穿梭，往往忽略了偶尔停下来、给自己一段轻松时刻的必要性。九游娱乐所呈现的，并不是单一的消遣，而是一种能够融入生活场景的轻松体验。无论是独自一人放松心情，还是与三五好友分享一份简单的快乐，这里都提供了一种自然的选择。</p>
+        <p>在内容与交互的设计上，团队始终秉持克制的态度——不夸张、不诱导，只希望每位使用者都能在适合自己的节奏里，找到一点小小的愉悦。从休闲小游戏到轻量互动内容，从趣味资讯到社区交流，每一个模块都经过筛选与打磨，尽力做到简洁、舒适、无负担。</p>
+    </section>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes-grid">
+        <div class="scene-card">
+            <h3>☕ 午后小憩 <span>放松</span></h3>
+            <p>一杯茶的时间，打开一个轻巧的互动内容，不必投入太多精力，却能短暂地从工作或学习中抽离，给大脑换换空气。</p>
+        </div>
+        <div class="scene-card">
+            <h3>👥 好友闲聚 <span>分享</span></h3>
+            <p>聚会时多一个话题或一起尝试简单的趣味挑战，笑声往往来自不经意的互动。不刻意、不喧闹，刚刚好。</p>
+        </div>
+        <div class="scene-card">
+            <h3>🌙 睡前过渡 <span>安静</span></h3>
+            <p>睡前的半小时，适合一些安静、低刺激的内容。没有紧迫的任务，只有温和的陪伴，帮助慢慢卸下一天的疲惫。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明 -->
+    <section class="faq-summary">
+        <h3>一些你可能想了解的</h3>
+        <div class="faq-item">
+            <div class="faq-question">内容会频繁更新吗？</div>
+            <div class="faq-answer">会保持适度的更新节奏，但不会为了更新而更新。每次添加的新内容都会经过内部评估，确保整体基调一致。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">是否需要注册或下载额外软件？</div>
+            <div class="faq-answer">大部分服务无需注册即可体验，部分社区或保存功能可能需要简单的账号绑定。不要求安装任何额外软件，浏览器打开即可。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">内容有年龄限制吗？</div>
+            <div class="faq-answer">所有内容均面向一般大众，不含少儿不宜或敏感题材。不同模块可能有不同的建议年龄，但整体适合全年龄段。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">与其他娱乐平台有什么不同？</div>
+            <div class="faq-answer">这里不追求刺激或成瘾性设计，更看重使用的「舒适感」。没有弹窗广告、不收集过量隐私数据，体验上更接近一个安静的社区。</div>
+        </div>
+    </section>
+
+    <!-- 自然嵌入链接的句子（符合要求：文本严格等于「九游娱乐」） -->
+    <div class="link-note">
+        <p>如果想亲自感受这种轻松的氛围，不妨去 <a href="https://index-portal-jiuyou.com" class="accent-link">九游娱乐</a> 看一看，也许会有意想不到的收获。</p>
+    </div>
+</main>
+
+<footer class="footer">
+    <p>© 2025 · 九游娱乐 · 简单、真实、有温度</p>
+</footer>
+
+</body>
+</html>
